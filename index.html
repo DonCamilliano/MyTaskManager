@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>My Task Manager</title>
+    <meta name="description" content="My Task Manager written using AngularJS and PHP">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="container" ng-app="myApp">
+    <div class="panel panel-primary" ng-controller="tasksContr">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h1 class="panel-title">My Task Manager</h1>
+                </div>
+                <div class="col-xs-3">
+                    <a class="btn btn-info" ng-click="inputShow = !inputShow">Dodaj zadanie</a>
+                </div>
+            </div>
+        </div>
+        <div class="row panel-body">
+            <div class="col-xs-12">
+                <div class="input-group" ng-show='inputShow'>
+                    <input type="text" class="form-control ng-pristine ng-valid" name="comment" ng-model="taskInput" placeholder="Nowe zadanie">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default add-style" type="submit" ng-click="addTask(taskInput)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Dodaj</button>
+                    </div>
+                </div>
+                <ul ng-repeat="task in tasks" class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-11" ng-class="{'green': done}">
+                                <button class="btn btn-default" ng-click="ChangeStatus(task.id,task.status)">
+                                    <span class="glyphicon glyphicon-ok-circle" ng-hide="task.status==0"></span>
+                                    <span class="glyphicon glyphicon-remove-circle" ng-show="task.status==0"></span>
+                                </button> {{task.task}}
+                            </div>
+                            <div class="col-xs-1">
+                                <a class="glyphicon glyphicon-edit" ng-click=Edit(task.id,task.task,task.status)></a>
+                                <a class="glyphicon glyphicon-trash" ng-click="Delete(task.id,task.task)"></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="input-group" ng-show="show">
+                    <input type="text" class="form-control ng-pristine ng-valid" ng-model="arr[1]">
+                    <div class="input-group-btn">
+                        <button class="btn btn-info" ng-click="Save(arr)">Zapisz</button>
+                    </div>
+                    <div class="input-group-btn">
+                        <button class="btn btn-danger" ng-click="show = FALSE">Zamknij</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+
+</html>

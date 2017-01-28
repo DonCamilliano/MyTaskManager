@@ -1,0 +1,39 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    font-size: 100%;
+}
+
+.panel-primary {
+    margin-top: 7%;
+}
+
+.panel-title {
+    font-size: 2rem;
+}
+
+.form-control {
+    height: 39px;
+}
+
+.input-group .btn {
+    font-size: 18px;
+    margin-bottom: 10%;
+}
+
+.list-group-item {
+    font-size: 1.1rem;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.glyphicon-ok-circle,
+.glyphicon-remove-circle {
+    font-size: 1.2rem;
+}
+
+.green {
+    color: green;
+}
